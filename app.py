@@ -154,10 +154,7 @@ def main():
 
         st.markdown(f"""\
             <div style="font-size: small">
-            ⚠️ Please take the CFR with a grain of salt. The ratio is 
-            highly dependend on the total number of tests conducted in a country. In the early stages
-            of the outbreak often mainly severe cases with clear symptoms are detected. Thus mild cases
-            are not recorded which skews the CFR.
+            Poblaciones actualizadas a Febrero de 2021.
             </div><br/>  
 
             """, unsafe_allow_html=True)
