@@ -24,7 +24,7 @@ inhabitants = {'Germany': 83.78,
             'Austria': 9.06,
             'Norway': 5.41,
             'Denmark': 5.79,
-               'Argentinak': 45.20,
+               'Argentina': 45.20,
                'Australia': 25.50,
                'Bangladesh': 164.69,
                'Brazil': 212.56,
@@ -88,7 +88,8 @@ def main():
 
     countries = ["Germany", "Austria", "Belgium", "Denmark", "France", "Greece", "Italy", \
                  "Netherlands", "Norway", "Poland", "Romania", "Spain", "Sweden", \
-                 "Switzerland", "United Kingdom","Andorra",]
+                 "Switzerland", "United Kingdom","Andorra","Argentina","Australia","Bangladesh","Brazil","Canada","China", \
+                 "Colombia","Egypt","Ethiopia","India","Indonesia","Japan","Russia",]
 
     analysis = st.sidebar.selectbox("Desplegable", ["Resumen global", "Por país"])
 
