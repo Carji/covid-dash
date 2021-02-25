@@ -8,24 +8,24 @@ import os
  
 
 
-# numbers for 2019
-inhabitants = {'Germany': 83.16,
-            'France': 67.2,
-            'United Kingdom': 67.1,
-            'Italy': 60.23,
-            'Spain': 47.05,
-            'Poland': 37.97,
-            'Romania': 19.28,
-            'Netherlands': 17.34,
-            'Belgium': 11.49,
-            'Greece': 10.69,
-            'Sweden': 10.15, 
-            'Switzerland': 8.57,
-            'Austria': 8.91,
-            'Norway': 5.36,
-            'Denmark': 5.77}
+#Poblaciones en 2021
+inhabitants = {'Germany': 83.78,
+            'France': 65.27,
+            'United Kingdom': 67.89,
+            'Italy': 60.46,
+            'Spain': 46.75,
+            'Poland': 37.84,
+            'Romania': 19.23,
+            'Netherlands': 17.13,
+            'Belgium': 11.59,
+            'Greece': 10.42,
+            'Sweden': 10.09, 
+            'Switzerland': 8.65,
+            'Austria': 9.06,
+            'Norway': 5.41,
+            'Denmark': 5.79}
 
-# invalidate cache every 1h so user gets new data without resetting cache in the hamburger menue 
+
 @st.cache(ttl=60*60*1)
 def read_data():
     BASEURL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series"    
@@ -65,12 +65,11 @@ def transform2(df, collabel='confirmed'):
 
 def main():
     st.set_page_config(page_title="Covid-19", page_icon=None, layout='centered', initial_sidebar_state='auto')
-    st.title("🦠 Covid-19 Data Explorer")
+    st.title("Covid 19 Exploratory Data Analysis 🔬")
     st.markdown("""\
-        This app illustrates the spread of COVID-19 in select countries of Europe over time.
+        
     """)
 
-    #st.error("⚠️ There is currently an issue in the datasource of JHU. Data for 03/13 is invalid and thus removed!")
 
     countries = ["Germany", "Austria", "Belgium", "Denmark", "France", "Greece", "Italy", \
                  "Netherlands", "Norway", "Poland", "Romania", "Spain", "Sweden", \
