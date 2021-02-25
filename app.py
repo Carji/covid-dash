@@ -75,13 +75,13 @@ def main():
                  "Netherlands", "Norway", "Poland", "Romania", "Spain", "Sweden", \
                  "Switzerland", "United Kingdom"]
 
-    analysis = st.sidebar.selectbox("Choose Analysis", ["Overview", "By Country"])
+    analysis = st.sidebar.selectbox("Desplegable", ["Resumen global", "Por país"])
 
-    if analysis == "Overview":
+    if analysis == "Resumen global":
 
-        st.header("COVID-19 cases and fatality rate in Europe")
+        st.header("Mortalidad y casos de Covid-19 en Europa")
         st.markdown("""\
-            These are the reported case numbers for a selection of european countries"""
+            Casos de Covid-19 en los países seleccionados"""
             f""" (currently only {', '.join(countries)}). """
             """The case fatality rate (CFR) is calculated as:  
             $$
@@ -163,7 +163,7 @@ def main():
             """, unsafe_allow_html=True)
 
 
-    elif analysis == "By Country":        
+    elif analysis == "Por país":        
 
         confirmed, deaths, recovered = read_data()
 
