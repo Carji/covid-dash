@@ -23,7 +23,8 @@ inhabitants = {'Germany': 83.78,
             'Switzerland': 8.65,
             'Austria': 9.06,
             'Norway': 5.41,
-            'Denmark': 5.79}
+            'Denmark': 5.79,
+              'Andorra': 0.077}
 
 
 @st.cache(ttl=60*60*1)
@@ -73,7 +74,7 @@ def main():
 
     countries = ["Germany", "Austria", "Belgium", "Denmark", "France", "Greece", "Italy", \
                  "Netherlands", "Norway", "Poland", "Romania", "Spain", "Sweden", \
-                 "Switzerland", "United Kingdom"]
+                 "Switzerland", "United Kingdom","Andorra",]
 
     analysis = st.sidebar.selectbox("Desplegable", ["Resumen global", "Por país"])
 
