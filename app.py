@@ -248,8 +248,7 @@ def main():
 
     st.info("""\
           
-        by: [C. Werner](https://www.christianwerner.net) | source: [GitHub](https://www.github.com/cwerner/covid19)
-        | data source: [Johns Hopkins Univerity (GitHub)](https://github.com/CSSEGISandData/COVID-19). 
+        Fuente de datos: [Johns Hopkins Univerity (GitHub)](https://github.com/CSSEGISandData/COVID-19). 
     """)
 
 
