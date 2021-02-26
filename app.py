@@ -214,7 +214,7 @@ def main():
 
         value_vars = variables
         SCALE = alt.Scale(domain=variables, range=colors)
-        if cummulative == 'new cases':
+        if cummulative == 'Nuevas notificaciones':
             value_vars = ["new"]
             df["new"] = df.confirmed - df.shift(1).confirmed
             df["new"].loc[df.new < 0]  = 0
@@ -236,7 +236,7 @@ def main():
             order='order'
         )
 
-        if conteo != 'Nuevas notificaciones':
+        if cummulative != 'Nuevas notificaciones':
             st.altair_chart(c, use_container_width=True)
         else:
             # media semanal (falta añadir IA14d)
