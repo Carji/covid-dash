@@ -178,7 +178,7 @@ def main():
 
         confirmed, deaths, recovered = read_data()
 
-        st.header("Country statistics")
+        st.header("Estadísticas individuales")
         st.markdown("""\
             Estadísticas desglosadas por país """
             f""" (actualmente sólo {', '.join(countries)}).  
