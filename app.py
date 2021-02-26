@@ -191,10 +191,10 @@ def main():
         # selections
         col1, col2, col3, _, _ = st.beta_columns(5)
 
-        selection = col1.selectbox("Select country:", countries)
-        cummulative = col2.radio("Display type:", ["total", "new cases"])
-        norm_sel = col3.radio("Normalize:", ["no", "yes"])
-        normalize = selection if norm_sel == "yes" else False
+        selection = col1.selectbox("Selecciona un país:", countries)
+        cummulative = col2.radio("Conteo:", ["Casos totales", "Nuevas notificaciones"])
+        norm_sel = col3.radio("Normalizar:", ["No", "Sí"])
+        normalize = selection if norm_sel == "Sí" else False
         
         confirmed = confirmed[confirmed["Country/Region"] == selection].iloc[:,3:]
         confirmed = transform(confirmed, collabel="confirmed", norm=normalize)
@@ -230,7 +230,7 @@ def main():
         cases_label = "Casos" if normalize == False else "Casos por 100000 habitantes"
 
         c = alt.Chart(dfm.reset_index()).mark_bar().properties(height=200).encode(
-            x=alt.X("date:T", title="Date"),
+            x=alt.X("date:T", title="Fecha"),
             y=alt.Y("sum(value):Q", title=cases_label, scale=alt.Scale(type='linear')),
             color=alt.Color('variable:N', title="Categoría", scale=SCALE), #, sort=alt.EncodingSortField('value', order='ascending')),
             order='order'
