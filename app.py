@@ -100,7 +100,7 @@ def main():
             Casos de Covid-19 en los países seleccionados"""
             f""" (Lista completa: {', '.join(countries)}). """
 
-            💡 Puedes añadir/quitar países y escoger escala logarítmica.
+            """💡 Puedes añadir/quitar países y escoger escala logarítmica.
             """)
 
         confirmed, deaths, recovered = read_data()
