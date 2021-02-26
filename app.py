@@ -149,19 +149,19 @@ def main():
         )
 
         per100k = confirmed.loc[[confirmed.index.max()]].copy()
-        per100k.loc[:,'inhabitants'] = per100k.apply(lambda x: inhabitants[x['country']], axis=1)
+        per100k.loc[:,'habitantes'] = per100k.apply(lambda x: inhabitants[x['country']], axis=1)
         per100k.loc[:,'per100k'] = per100k.confirmed / (per100k.inhabitants * 1_000_000) * 100_000
         per100k = per100k.set_index("country")
         per100k = per100k.sort_values(ascending=False, by='per100k')
         per100k.loc[:,'per100k'] = per100k.per100k.round(2)
 
         c4 = alt.Chart(per100k.reset_index()).properties(width=75).mark_bar().encode(
-            x=alt.X("per100k:Q", title="Cases per 100k inhabitants"),
-            y=alt.Y("country:N", title="Countries", sort=None),
-            color=alt.Color('country:N', title="Country"),
-            tooltip=[alt.Tooltip('country:N', title='Country'), 
-                     alt.Tooltip('per100k:Q', title='Cases per 100k'),
-                     alt.Tooltip('inhabitants:Q', title='Inhabitants [mio]')]
+            x=alt.X("per100k:Q", title="Casos por 100000 habitantes"),
+            y=alt.Y("country:N", title="Países", sort=None),
+            color=alt.Color('country:N', title="Países"),
+            tooltip=[alt.Tooltip('country:N', title='País'), 
+                     alt.Tooltip('per100k:Q', title='Casos por 100000 habitantes'),
+                     alt.Tooltip('habitantes:Q', title='Habitantes [10^6]')]
         )
 
         st.altair_chart(alt.hconcat(c4, alt.vconcat(c2, c3)), use_container_width=True)
