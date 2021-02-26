@@ -138,16 +138,16 @@ def main():
 
 
         c2 = alt.Chart(confirmed.reset_index()).properties(height=150).mark_line().encode(
-            x=alt.X("date:T", title="Date"),
-            y=alt.Y("confirmed:Q", title="Cases", scale=SCALE),
-            color=alt.Color('country:N', title="Country")
+            x=alt.X("date:T", title="Fecha"),
+            y=alt.Y("confirmed:Q", title="Número de casos", scale=SCALE),
+            color=alt.Color('country:N', title="País")
         )
 
         # case fatality rate...
         c3 = alt.Chart(frate.reset_index()).properties(height=100).mark_line().encode(
-            x=alt.X("date:T", title="Date"),
-            y=alt.Y("frate:Q", title="Fatality rate [%]", scale=alt.Scale(type='linear')),
-            color=alt.Color('country:N', title="Country")
+            x=alt.X("date:T", title="Fecha"),
+            y=alt.Y("frate:Q", title="Tasa de mortalidad [%]", scale=alt.Scale(type='linear')),
+            color=alt.Color('country:N', title="País")
         )
 
         per100k = confirmed.loc[[confirmed.index.max()]].copy()
@@ -182,12 +182,12 @@ def main():
 
         st.header("Country statistics")
         st.markdown("""\
-            The reported number of active, recovered and deceased COVID-19 cases by country """
+            Estadísticas desglosadas por país """
             f""" (currently only {', '.join(countries)}).  
             """
             """  
-            ℹ️ You can select countries and plot data as cummulative counts or new active cases per day.
-            Normalize scales the values to counts per 100k inhabitants. 
+            💡 Puedes seleccionar casos totales o nuevos casos diarios.
+            Normalizar indica los casos por cada 100000 habitantes. 
             """)
 
         # selections
