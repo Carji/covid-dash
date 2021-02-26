@@ -107,8 +107,8 @@ def main():
 
         confirmed, deaths, recovered = read_data()
 
-        multiselection = st.multiselect("Select countries:", countries, default=countries)
-        logscale = st.checkbox("Log scale", False)
+        multiselection = st.multiselect("Añade/quita países:", countries, default=countries)
+        logscale = st.checkbox("Escala logarítmica", False)
 
         confirmed = confirmed[confirmed["Country/Region"].isin(multiselection)]
         confirmed = confirmed.drop(["Lat", "Long"],axis=1)
@@ -227,12 +227,12 @@ def main():
             {val: i for i, val in enumerate(variables[::-1])}
         )
 
-        cases_label = "Cases" if normalize == False else "Cases per 100k"
+        cases_label = "Casos" if normalize == False else "Casos por 100000 habitantes"
 
         c = alt.Chart(dfm.reset_index()).mark_bar().properties(height=200).encode(
             x=alt.X("date:T", title="Date"),
             y=alt.Y("sum(value):Q", title=cases_label, scale=alt.Scale(type='linear')),
-            color=alt.Color('variable:N', title="Category", scale=SCALE), #, sort=alt.EncodingSortField('value', order='ascending')),
+            color=alt.Color('variable:N', title="Categoría", scale=SCALE), #, sort=alt.EncodingSortField('value', order='ascending')),
             order='order'
         )
 
@@ -242,7 +242,7 @@ def main():
             # add smooth 7-day trend
             rm_7day = df[['new']].rolling('7D').mean().rename(columns={'new': 'value'})
             c_7day = alt.Chart(rm_7day.reset_index()).properties(height=200).mark_line(strokeDash=[1,1], color='red').encode(
-                x=alt.X("date:T", title="Date"),
+                x=alt.X("date:T", title="Fecha"),
                 y=alt.Y("value:Q", title=cases_label, scale=alt.Scale(type='linear')),
             )
             st.altair_chart((c + c_7day), use_container_width=True)
