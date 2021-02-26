@@ -150,7 +150,7 @@ def main():
 
         per100k = confirmed.loc[[confirmed.index.max()]].copy()
         per100k.loc[:,'habitantes'] = per100k.apply(lambda x: habitantes[x['country']], axis=1)
-        per100k.loc[:,'per100k'] = per100k.confirmed / (per100k.inhabitants * 1_000_000) * 100_000
+        per100k.loc[:,'per100k'] = per100k.confirmed / (per100k.habitantes * 1_000_000) * 100_000
         per100k = per100k.set_index("country")
         per100k = per100k.sort_values(ascending=False, by='per100k')
         per100k.loc[:,'per100k'] = per100k.per100k.round(2)
@@ -181,7 +181,7 @@ def main():
         st.header("Country statistics")
         st.markdown("""\
             Estadísticas desglosadas por país """
-            f""" (currently only {', '.join(countries)}).  
+            f""" (actualmente sólo {', '.join(countries)}).  
             """
             """  
             💡 Puedes seleccionar casos totales o nuevos casos diarios.
