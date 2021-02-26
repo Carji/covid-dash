@@ -194,16 +194,16 @@ def main():
         selection = col1.selectbox("Selecciona un país:", countries)
         cummulative = col2.radio("Conteo:", ["Casos totales", "Nuevas notificaciones"])
         norm_sel = col3.radio("Normalizar:", ["No", "Sí"])
-        normalize = selection if norm_sel == "Sí" else False
+        normalizar = selection if norm_sel == "Sí" else False
         
         confirmed = confirmed[confirmed["Country/Region"] == selection].iloc[:,3:]
-        confirmed = transform(confirmed, collabel="confirmed", norm=normalize)
+        confirmed = transform(confirmed, collabel="confirmed", norm=normalizar)
 
         deaths = deaths[deaths["Country/Region"] == selection].iloc[:,3:]
-        deaths = transform(deaths, collabel="deaths", norm=normalize)
+        deaths = transform(deaths, collabel="deaths", norm=normalizar)
 
         recovered = recovered[recovered["Country/Region"] == selection].iloc[:,3:]
-        recovered = transform(recovered, collabel="recovered", norm=normalize)
+        recovered = transform(recovered, collabel="recovered", norm=normalizar)
 
         
         df = reduce(lambda a,b: pd.merge(a,b, on='date'), [confirmed, recovered, deaths])
