@@ -236,7 +236,7 @@ def main():
             order='order'
         )
 
-        if cummulative != 'new cases':
+        if cummulative != 'Nuevas notificaciones':
             st.altair_chart(c, use_container_width=True)
         else:
             # add smooth 7-day trend
