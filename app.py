@@ -236,7 +236,7 @@ def main():
             order='order'
         )
 
-        if cummulative != 'Nuevas notificaciones':
+        if cummulative != 'new cases':
             st.altair_chart(c, use_container_width=True)
         else:
             # add smooth 7-day trend
@@ -247,7 +247,7 @@ def main():
             )
             st.altair_chart((c + c_7day), use_container_width=True)
             st.markdown(f"""\
-                <div style="font-size: small">Daily reported new cases (incl. 7-day average).</div><br/>
+                <div style="font-size: small">Nuevos casos diarios (incluyendo media semanal).</div><br/>
                 """, unsafe_allow_html=True)
 
 
