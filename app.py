@@ -227,7 +227,7 @@ def main():
             {val: i for i, val in enumerate(variables[::-1])}
         )
 
-        cases_label = "Casos" if normalize == False else "Casos por 100000 habitantes"
+        cases_label = "Casos" if normalizar == False else "Casos por 100000 habitantes"
 
         c = alt.Chart(dfm.reset_index()).mark_bar().properties(height=200).encode(
             x=alt.X("date:T", title="Fecha"),
