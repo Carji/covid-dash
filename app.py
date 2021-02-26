@@ -9,7 +9,7 @@ import os
 
 
 #Poblaciones en 2021
-inhabitants = {'Germany': 83.78,
+habitantes = {'Germany': 83.78,
             'France': 65.27,
             'United Kingdom': 67.89,
             'Italy': 60.46,
@@ -67,7 +67,7 @@ def transform(df, collabel='confirmed', norm=False):
     dfm = dfm[["value"]]
     dfm.columns = [collabel]
     if norm:
-        dfm[[collabel]] = dfm[[collabel]] / (inhabitants[norm]* 1_000_000) * 100_000
+        dfm[[collabel]] = dfm[[collabel]] / (habitantes[norm]* 1_000_000) * 100_000
     return dfm
 
 def transform2(df, collabel='confirmed'):
@@ -98,13 +98,9 @@ def main():
         st.header("Mortalidad y casos de Covid-19 en diversos países")
         st.markdown("""\
             Casos de Covid-19 en los países seleccionados"""
-            f""" (currently only {', '.join(countries)}). """
-            """The case fatality rate (CFR) is calculated as:  
-            $$
-            CFR[\%] = \\frac{fatalities}{\\textit{all cases}}
-            $$
+            f""" (Lista completa: {', '.join(countries)}). """
 
-            ℹ️ You can select/ deselect countries and switch between linear and log scales.
+            💡 Puedes añadir/quitar países y escoger escala logarítmica.
             """)
 
         confirmed, deaths, recovered = read_data()
