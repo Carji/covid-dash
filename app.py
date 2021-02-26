@@ -98,7 +98,8 @@ def main():
         st.header("Mortalidad y casos de Covid-19 en diversos países")
         st.markdown("""\
             Casos de Covid-19 en los países seleccionados"""
-            f""" (Lista completa: {', '.join(countries)}). """
+            f""" (Lista completa: {', '.join(countries)}). 
+            """
 
             """💡 Puedes añadir/quitar países y escoger escala logarítmica.
             """)
