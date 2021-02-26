@@ -236,10 +236,10 @@ def main():
             order='order'
         )
 
-        if cummulative != 'new cases':
+        if conteo != 'Nuevas notificaciones':
             st.altair_chart(c, use_container_width=True)
         else:
-            # add smooth 7-day trend
+            # media semanal (falta añadir IA14d)
             rm_7day = df[['new']].rolling('7D').mean().rename(columns={'new': 'value'})
             c_7day = alt.Chart(rm_7day.reset_index()).properties(height=200).mark_line(strokeDash=[1,1], color='red').encode(
                 x=alt.X("date:T", title="Fecha"),
