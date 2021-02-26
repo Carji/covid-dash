@@ -24,20 +24,20 @@ habitantes = {'Germany': 83.78,
             'Austria': 9.06,
             'Norway': 5.41,
             'Denmark': 5.79,
-               'Argentina': 45.20,
-               'Australia': 25.50,
-               'Bangladesh': 164.69,
-               'Brazil': 212.56,
-               'Canada': 37.74,
-               'China': 1439.33,
-               'Colombia': 50.88,
-               'Egypt': 102.33,
-               'Ethiopia': 114.96,
-               'India': 1380.00,
-               'Indonesia': 273.52,
-               'Japan': 126.47,
-               'Russia': 145.93,
-               'Andorra': 0.077}
+            'Argentina': 45.20,
+            'Australia': 25.50,
+            'Bangladesh': 164.69,
+            'Brazil': 212.56,
+            'Canada': 37.74,
+            'China': 1439.33,
+            'Colombia': 50.88,
+            'Egypt': 102.33,
+            'Ethiopia': 114.96,
+            'India': 1380.00,
+            'Indonesia': 273.52,
+            'Japan': 126.47,
+            'Russia': 145.93,
+            'Andorra': 0.077}
 
 
 
@@ -101,7 +101,8 @@ def main():
             f""" (Lista completa: {', '.join(countries)}). 
             """
 
-            """💡 Puedes añadir/quitar países y escoger escala logarítmica.
+            """
+            💡 Puedes añadir/quitar países y escoger escala logarítmica.
             """)
 
         confirmed, deaths, recovered = read_data()
