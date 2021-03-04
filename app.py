@@ -229,7 +229,7 @@ def main():
 
         cases_label = "Casos" if normalizar == False else "Casos por 100000 habitantes"
 
-        c = alt.Chart(dfm.reset_index()).mark_bar().properties(height=200).encode(
+        c = alt.Chart(dfm.reset_index()).mark_bar().properties(height=1000).encode(
             x=alt.X("date:T", title="Fecha"),
             y=alt.Y("sum(value):Q", title=cases_label, scale=alt.Scale(type='linear')),
             color=alt.Color('variable:N', title="Categoría", scale=SCALE), #, sort=alt.EncodingSortField('value', order='ascending')),
@@ -241,7 +241,7 @@ def main():
         else:
             # media semanal (falta añadir IA14d)
             rm_7day = df[['new']].rolling('7D').mean().rename(columns={'new': 'value'})
-            c_7day = alt.Chart(rm_7day.reset_index()).properties(height=200).mark_line(strokeDash=[1,1], color='red').encode(
+            c_7day = alt.Chart(rm_7day.reset_index()).properties(height=1000).mark_line(strokeDash=[1,1], color='red').encode(
                 x=alt.X("date:T", title="Fecha"),
                 y=alt.Y("value:Q", title=cases_label, scale=alt.Scale(type='linear')),
             )
