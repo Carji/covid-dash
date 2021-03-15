@@ -5,6 +5,9 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 import os
+import matplotlib.pyplot as plt
+import numpy as np
+
  
 
 
@@ -250,8 +253,6 @@ def main():
                 <div style="font-size: small">Nuevos casos diarios (incluyendo media semanal).</div><br/>
                 """, unsafe_allow_html=True)
 
-    import matplotlib.pyplot as plt
-    import numpy as np
 
     arr = np.random.normal(1, 1, size=100)
     fig, ax = plt.subplots()
