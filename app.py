@@ -229,7 +229,7 @@ def main():
 
         cases_label = "Casos" if normalizar == False else "Casos por 100000 habitantes"
 
-        c = alt.Chart(dfm.reset_index()).mark_bar().properties(height=1000).encode(
+        c = alt.Chart(dfm.reset_index()).mark_bar().properties(height=100).encode(
             x=alt.X("date:T", title="Fecha"),
             y=alt.Y("sum(value):Q", title=cases_label, scale=alt.Scale(type='linear')),
             color=alt.Color('variable:N', title="Categoría", scale=SCALE), #, sort=alt.EncodingSortField('value', order='ascending')),
@@ -241,7 +241,7 @@ def main():
         else:
             # media semanal (falta añadir IA14d)
             rm_7day = df[['new']].rolling('7D').mean().rename(columns={'new': 'value'})
-            c_7day = alt.Chart(rm_7day.reset_index()).properties(height=1000).mark_line(strokeDash=[1,1], color='red').encode(
+            c_7day = alt.Chart(rm_7day.reset_index()).properties(height=100).mark_line(strokeDash=[1,1], color='red').encode(
                 x=alt.X("date:T", title="Fecha"),
                 y=alt.Y("value:Q", title=cases_label, scale=alt.Scale(type='linear')),
             )
@@ -250,7 +250,14 @@ def main():
                 <div style="font-size: small">Nuevos casos diarios (incluyendo media semanal).</div><br/>
                 """, unsafe_allow_html=True)
 
+    import matplotlib.pyplot as plt
+    import numpy as np
 
+    arr = np.random.normal(1, 1, size=100)
+    fig, ax = plt.subplots()
+    ax.hist(arr, bins=20)
+    
+    st.pyplot(fig)
     st.info("""\
           
         Fuente de datos: [Johns Hopkins Univerity (GitHub)](https://github.com/CSSEGISandData/COVID-19). 
