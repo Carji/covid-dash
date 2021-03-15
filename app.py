@@ -252,14 +252,15 @@ def main():
             st.markdown(f"""\
                 <div style="font-size: small">Nuevos casos diarios (incluyendo media semanal).</div><br/>
                 """, unsafe_allow_html=True)
+#ToDo List:
+#añadir plots de matplotlib, bokeh
 
-
-    arr = np.random.normal(1, 1, size=100)
-    fig, ax = plt.subplots()
-    ax.hist(arr, bins=20)
-    
-    st.pyplot(fig)
-    st.info("""\
+#    arr = np.random.normal(1, 1, size=100)
+#    fig, ax = plt.subplots()
+#    ax.hist(arr, bins=20)
+#    
+#    st.pyplot(fig)
+#    st.info("""\
           
         Fuente de datos: [Johns Hopkins Univerity (GitHub)](https://github.com/CSSEGISandData/COVID-19). 
     """)
