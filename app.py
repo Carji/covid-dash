@@ -263,7 +263,7 @@ def main():
 #    st.info("""\
 
              
-        st.info("""\    
+        st.info("""    
         Fuente de datos: [Johns Hopkins Univerity (GitHub)](https://github.com/CSSEGISandData/COVID-19). 
     """)
 
