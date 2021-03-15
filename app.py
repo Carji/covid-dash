@@ -11,37 +11,38 @@ import numpy as np
  
 
 
-#Poblaciones en 2021
-habitantes = {'Germany': 83.78,
-            'France': 65.27,
-            'United Kingdom': 67.89,
-            'Italy': 60.46,
-            'Spain': 46.75,
-            'Poland': 37.84,
-            'Romania': 19.23,
-            'Netherlands': 17.13,
-            'Belgium': 11.59,
-            'Greece': 10.42,
-            'Sweden': 10.09, 
-            'Switzerland': 8.65,
-            'Austria': 9.06,
-            'Norway': 5.41,
-            'Denmark': 5.79,
-            'Argentina': 45.20,
-            'Australia': 25.50,
-            'Bangladesh': 164.69,
-            'Brazil': 212.56,
-            'Canada': 37.74,
-            'China': 1439.33,
-            'Colombia': 50.88,
-            'Egypt': 102.33,
-            'Ethiopia': 114.96,
-            'India': 1380.00,
-            'Indonesia': 273.52,
-            'Japan': 126.47,
-            'Russia': 145.93,
-            'Andorra': 0.077}
-
+#Poblaciones en 2021 (actualizado el 15-Marzo)
+habitantes = {
+             'Andorra': 0.077, 
+             'Argentina': 45.20,
+             'Australia': 25.50,
+             'Austria': 9.06,
+             'Bangladesh': 164.69,
+             'Belgium': 11.59,
+             'Brazil': 212.56,
+             'Canada': 37.74,
+             'China': 1439.33,
+             'Colombia': 50.88,
+             'Denmark': 5.79,
+             'Egypt': 102.33,
+             'Ethiopia': 114.96,
+             'France': 65.27,
+             'Germany': 83.78,
+             'Greece': 10.42,
+             'India': 1380.00,
+             'Indonesia': 273.52,
+             'Italy': 60.46,
+             'Japan': 126.47,
+             'Netherlands': 17.13,
+             'Norway': 5.41,
+             'Poland': 37.84,
+             'Romania': 19.23,
+             'Russia': 145.93,
+             'Spain': 46.75,
+             'Sweden': 10.09, 
+             'Switzerland': 8.65,
+             'United Kingdom': 67.89}
+ 
 
 
 @st.cache(ttl=60*60*1)
@@ -253,7 +254,7 @@ def main():
                 <div style="font-size: small">Nuevos casos diarios (incluyendo media semanal).</div><br/>
                 """, unsafe_allow_html=True)
 #ToDo List:
-#añadir plots de matplotlib, bokeh
+#añadir plots de matplotlib, bokeh, desglosar por comunidades (faltaría el csv anidado)
 
 #    arr = np.random.normal(1, 1, size=100)
 #    fig, ax = plt.subplots()
@@ -261,7 +262,9 @@ def main():
 #    
 #    st.pyplot(fig)
 #    st.info("""\
-          
+
+             
+        st.info("""\    
         Fuente de datos: [Johns Hopkins Univerity (GitHub)](https://github.com/CSSEGISandData/COVID-19). 
     """)
 
