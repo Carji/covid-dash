@@ -90,10 +90,9 @@ def main():
     """)
 
 
-    countries = ["Germany", "Austria", "Belgium", "Denmark", "France", "Greece", "Italy", \
-                 "Netherlands", "Norway", "Poland", "Romania", "Spain", "Sweden", \
-                 "Switzerland", "United Kingdom","Andorra","Argentina","Australia","Bangladesh","Brazil","Canada","China", \
-                 "Colombia","Egypt","Ethiopia","India","Indonesia","Japan","Russia",]
+    countries = ["Andorra", "Argentina", "Australia","Austria","Bangladesh","Belgium","Brazil","Canada","China","Colombia", \
+             "Denmark","Egypt","Ethiopia","France","Germany","Greece","India","Indonesia","Italy","Japan","Netherlands", \
+             "Norway","Poland","Romania","Russia","Spain","Sweden","Switzerland","United Kingdom",]
 
     analysis = st.sidebar.selectbox("Desplegable", ["Resumen global", "Por país"])
 
