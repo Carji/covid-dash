@@ -141,7 +141,7 @@ def main():
         c2 = alt.Chart(confirmed.reset_index()).properties(height=150).mark_line().encode(
             x=alt.X("date:T", title="Fecha"),
             y=alt.Y("confirmed:Q", title="Número de casos", scale=SCALE),
-            color=alt.Color('country:N', title="País")
+            color=alt.Color('country:N', title="País",scale=alt.Scale(scheme='dark2'))
         ).interactive()
 
         # case fatality rate...
