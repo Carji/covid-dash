@@ -147,7 +147,7 @@ def main():
         # case fatality rate...
         c3 = alt.Chart(frate.reset_index()).properties(height=100).mark_line().encode(
             x=alt.X("date:T", title="Fecha"),
-            y=alt.Y("frate:Q", title="Tasa de mortalidad [%]", scale=alt.Scale(type='linear')),
+            y=alt.Y("frate:Q", title="Tasa de mortalidad [%]", scale=alt.Scale(type='linear'),scale=alt.Scale(scheme='tableau20')),
             color=alt.Color('country:N', title="País")
         ).interactive()
 
@@ -161,7 +161,7 @@ def main():
         c4 = alt.Chart(per100k.reset_index()).properties(width=75).mark_bar().encode(
             x=alt.X("per100k:Q", title="Casos por 100000 habitantes"),
             y=alt.Y("country:N", title="Países", sort=None),
-            color=alt.Color('country:N', title="Países"),
+            color=alt.Color('country:N', title="Países",scale=alt.Scale(scheme='tableau20')),
             tooltip=[alt.Tooltip('country:N', title='País'), 
                      alt.Tooltip('per100k:Q', title='Casos por 100000 habitantes'),
                      alt.Tooltip('habitantes:Q', title='Habitantes [10^6]')]
@@ -213,7 +213,7 @@ def main():
         df["active"] = df.confirmed - (df.deaths + df.recovered)
 
         variables = ["recovered", "active", "deaths"]
-        colors = ["steelblue", "orange", "black"]
+        colors = ["green", "blue", "red"]
 
         value_vars = variables
         SCALE = alt.Scale(domain=variables, range=colors)
@@ -235,7 +235,7 @@ def main():
         c = alt.Chart(dfm.reset_index()).mark_bar().properties(height=300).encode(
             x=alt.X("date:T", title="Fecha"),
             y=alt.Y("sum(value):Q", title=cases_label, scale=alt.Scale(type='linear')),
-            color=alt.Color('variable:N', title="Categoría", scale=SCALE), #, sort=alt.EncodingSortField('value', order='ascending')),
+            color=alt.Color('variable:N', title="Categoría", scale=SCALE), ,scale=alt.Scale(scheme='tableau20'),#, sort=alt.EncodingSortField('value', order='ascending')),
             order='order'
         ).interactive()
 
