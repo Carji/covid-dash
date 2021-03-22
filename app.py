@@ -221,7 +221,7 @@ def main():
             value_vars = ["new"]
             df["new"] = df.confirmed - df.shift(1).confirmed
             df["new"].loc[df.new < 0]  = 0
-            SCALE = alt.Scale(domain=["new"], range=["orange"]) 
+            SCALE = alt.Scale(domain=["new"], range=["blue"]) 
 
         dfm = pd.melt(df.reset_index(), id_vars=["date"], value_vars=value_vars)
 
