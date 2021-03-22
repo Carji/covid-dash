@@ -248,7 +248,7 @@ def main():
                 x=alt.X("date:T", title="Fecha"),
                 y=alt.Y("value:Q", title=cases_label, scale=alt.Scale(type='linear')),
             )
-            st.altair_chart((c + c_7day), use_container_width=True).interactive()
+            st.altair_chart((c + c_7day), use_container_width=True)
             st.markdown(f"""\
                 <div style="font-size: small">Nuevos casos diarios (incluyendo media semanal).</div><br/>
                 """, unsafe_allow_html=True)
