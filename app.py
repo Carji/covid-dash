@@ -147,7 +147,7 @@ def main():
         # case fatality rate...
         c3 = alt.Chart(frate.reset_index()).properties(height=100).mark_line().encode(
             x=alt.X("date:T", title="Fecha"),
-            y=alt.Y("frate:Q", title="Tasa de mortalidad [%]", scale=alt.Scale(type='linear',scheme='tableau20')),
+            y=alt.Y("frate:Q", title="Tasa de mortalidad [%]", scale=alt.Scale(type='linear')),
             color=alt.Color('country:N', title="País")
         ).interactive()
 
