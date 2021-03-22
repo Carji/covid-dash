@@ -237,7 +237,7 @@ def main():
             y=alt.Y("sum(value):Q", title=cases_label, scale=alt.Scale(type='linear')),
             color=alt.Color('variable:N', title="Categoría", scale=SCALE), #, sort=alt.EncodingSortField('value', order='ascending')),
             order='order'
-        )
+        ).interactive()
 
         if cummulative != 'Nuevas notificaciones':
             st.altair_chart(c, use_container_width=True)
@@ -248,7 +248,7 @@ def main():
                 x=alt.X("date:T", title="Fecha"),
                 y=alt.Y("value:Q", title=cases_label, scale=alt.Scale(type='linear')),
             )
-            st.altair_chart((c + c_7day), use_container_width=True)
+            st.altair_chart((c + c_7day), use_container_width=True).interactive()
             st.markdown(f"""\
                 <div style="font-size: small">Nuevos casos diarios (incluyendo media semanal).</div><br/>
                 """, unsafe_allow_html=True)
