@@ -235,7 +235,7 @@ def main():
         c = alt.Chart(dfm.reset_index()).mark_bar().properties(height=300).encode(
             x=alt.X("date:T", title="Fecha"),
             y=alt.Y("sum(value):Q", title=cases_label, scale=alt.Scale(type='linear')),
-            color=alt.Color('variable:N', title="Categoría", scale=SCALE), ,scale=alt.Scale(scheme='tableau20'),#, sort=alt.EncodingSortField('value', order='ascending')),
+            color=alt.Color('variable:N', title="Categoría", scale=SCALE) ,scale=alt.Scale(scheme='tableau20'),#, sort=alt.EncodingSortField('value', order='ascending')),
             order='order'
         ).interactive()
 
