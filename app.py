@@ -141,7 +141,7 @@ def main():
         c2 = alt.Chart(confirmed.reset_index()).properties(height=150).mark_line().encode(
             x=alt.X("date:T", title="Fecha"),
             y=alt.Y("confirmed:Q", title="Número de casos", scale=SCALE),
-            color=alt.Color('country:N', title="País").interactive()
+            color=alt.Color('country:N', title="País")
         )
 
         # case fatality rate...
@@ -165,7 +165,7 @@ def main():
             tooltip=[alt.Tooltip('country:N', title='País'), 
                      alt.Tooltip('per100k:Q', title='Casos por 100000 habitantes'),
                      alt.Tooltip('habitantes:Q', title='Habitantes [10^6]')]
-        )
+        ).interactive()
 
         st.altair_chart(alt.hconcat(c4, alt.vconcat(c2, c3)), use_container_width=True)
 
