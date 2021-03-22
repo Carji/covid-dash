@@ -142,14 +142,14 @@ def main():
             x=alt.X("date:T", title="Fecha"),
             y=alt.Y("confirmed:Q", title="Número de casos", scale=SCALE),
             color=alt.Color('country:N', title="País")
-        )
+        ).interactive()
 
         # case fatality rate...
         c3 = alt.Chart(frate.reset_index()).properties(height=100).mark_line().encode(
             x=alt.X("date:T", title="Fecha"),
             y=alt.Y("frate:Q", title="Tasa de mortalidad [%]", scale=alt.Scale(type='linear')),
             color=alt.Color('country:N', title="País")
-        )
+        ).interactive()
 
         per100k = confirmed.loc[[confirmed.index.max()]].copy()
         per100k.loc[:,'habitantes'] = per100k.apply(lambda x: habitantes[x['country']], axis=1)
