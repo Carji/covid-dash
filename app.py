@@ -289,7 +289,7 @@ def main():
 ## MAP
 
 # Variable for date picker, default to Jan 1st 2020
-        date = datetime.date(2020,1,1)
+        date = newdate
 # Set viewport for the deckgl map
         view = pdk.ViewState(latitude=0, longitude=0, zoom=0.2,)
 # Create the scatter plot layer
