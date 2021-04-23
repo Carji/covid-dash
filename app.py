@@ -84,7 +84,7 @@ def transform2(df, collabel='confirmed'):
 
 def main():
     st.set_page_config(page_title="Breve dash autoactualizable para el Covid-19", page_icon=None, layout='centered', initial_sidebar_state='auto')
-    st.title("Breve dash autoactualizable para el Covid-19 🔬")
+    st.title("Dash autoactualizable para el Covid-19 🔬")
     st.markdown("""\
         
     """)
@@ -266,15 +266,15 @@ def main():
 
         confirmed, deaths, recovered = read_data()
 
-        st.header("Estadísticas individuales")
+        st.header("Estadísticas por fecha")
         st.markdown("""\
-            Estadísticas desglosadas por país """
-            f""" (actualmente sólo {', '.join(countries)}).  
-            """
-            """  
-            💡 Puedes seleccionar casos totales o nuevos casos diarios.
-            Normalizar indica los casos por cada 100000 habitantes. 
-            """)
+             """)
+            
+        start_date=st.date_input("Fecha inicial", datetime.date(2021, 1, 1))
+        end_date=st.date_input("Fecha final", datetime.date(2021, 3, 15))
+        tickerDf = tickerData.history(period='1d', start=start_date, end=end_date)
+        string_logo = '<img src=%s>' % tickerData.info['logo_url']
+        st.sidebar.markdown(string_logo, unsafe_allow_html=True)
 
         # selections
         col1, col2, col3, _, _ = st.beta_columns(5)
