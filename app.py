@@ -305,7 +305,7 @@ def main():
                 radius_max_pixels=60,
                 line_width_min_pixels=1,
                 get_position=["Long_", "Lat"],
-                get_radius=metric_to_show_in_covid_Layer,
+                get_radius="Confirmed",
                 get_fill_color=[252, 136, 3],
                 get_line_color=[255,0,0],
                 tooltip="test test",
