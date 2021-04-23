@@ -317,7 +317,7 @@ def main():
     # Increment day by 1
             date += datetime.timedelta(days=1)
     # Update data in map layers
-            covidLayer.data = df[df['date'] == date.isoformat()]
+            covidLayer.data = df[df['Last_Update'] == date.isoformat()]
     # Update the deck.gl map
             r.update()
     # Render the map
