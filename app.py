@@ -274,7 +274,7 @@ def main():
         # Adding code so we can have map default to the center of the data
         midpoint = (np.average(data['lat']), np.average(data['lon']))
     
-        st.deck_gl_chart(
+        st.pdk_chart(
                     viewport={
                         'latitude': midpoint[0],
                         'longitude':  midpoint[1],
