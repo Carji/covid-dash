@@ -262,7 +262,7 @@ def main():
 #    st.pyplot(fig)
 #    st.info("""\
 
-         elif analysis == "Por fecha":        
+    elif analysis == "Por fecha":        
 
         confirmed, deaths, recovered = read_data()
 
