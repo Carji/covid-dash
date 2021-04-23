@@ -264,9 +264,19 @@ def main():
 #    st.info("""\
 
     elif analysis == "Por fecha":        
-              
-              
-              
+        start_date=datetime(2021,3,1)
+        end_date=datetime(2021, 4, 22)
+#between_two_dates = ['start_date','end_date']
+        newdate0=datetime.date(start_date)
+        newdate=datetime.strptime("2021,3,1","%Y,%m,%d" ).strftime("%Y-%m-%d")
+#newdate=datetime(start_date,"%Y-%m-%d")
+#newdate2=datetime(start_date,"%m/%d/%Y")
+#confirmedDf = pd.read_csv(f"{BASEURL2}/+ start_date + '.csv'")
+#deathsDf = deaths.loc(newdate)
+#recoveredDf = recovered.loc(newdate)
+        baseurl2="/"+newdate+".csv"        
+        confirmedDf = pd.read_csv(f"{baseurl2}")      
+        df=confirmedDf      
 ## MAP
 
 # Variable for date picker, default to Jan 1st 2020
