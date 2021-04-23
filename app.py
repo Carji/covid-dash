@@ -272,15 +272,13 @@ def main():
             
         start_date=st.date_input("Fecha inicial", datetime.date(2021, 1, 1))
         end_date=st.date_input("Fecha final", datetime.date(2021, 3, 15))
-        between_two_dates = start_date & end_date
-        confirmedDf = confirmed.loc(between_two_dates)
-        deathsDf = deaths.loc(between_two_dates)
-        recoveredDf = recovered.loc(between_two_dates)
+#        between_two_dates = start_date & end_date
+        confirmedDf = confirmed.loc(start_date)
+        deathsDf = deaths.loc(start_date)
+        recoveredDf = recovered.loc(start_date)
         #string_logo = '<img src=%s>' % tickerData.info['logo_url']
         #st.sidebar.markdown(string_logo, unsafe_allow_html=True)
-        
-        between_two_dates = start_date & end_date
-        filtered_dates = df.loc[between_two_dates] 
+       
 
         # selections
         col1, col2, col3, _, _ = st.beta_columns(5)
