@@ -279,7 +279,12 @@ def main():
         #recoveredDf = recovered.loc(newdate)
         baseurl2="/"+newdate+".csv"
         url2_confirmed = f"{BASEURL}{baseurl2}"  
-        confirmedDf = pd.read_csv(f"{url2_confirmed}")
+ #       confirmedDf = pd.read_csv(f"{url2_confirmed}")
+        
+        
+        
+        
+        confirmedDf = pd.read_csv("2021-03-01.csv")
         df=confirmedDf      
 ## MAP
 
