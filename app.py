@@ -270,8 +270,8 @@ def main():
         st.markdown("""\
              """)
             
-        start_date=st.date_input("Fecha inicial", datetime.date(2021, 1, 1))
-        end_date=st.date_input("Fecha final", datetime.date(2021, 3, 15))
+        start_date=st.date_input("Fecha inicial", datetime.date(1/15/20))
+        end_date=st.date_input("Fecha final", datetime.date(3/15/20))
 #        between_two_dates = start_date & end_date
         confirmedDf = confirmed.loc(start_date)
         deathsDf = deaths.loc(start_date)
