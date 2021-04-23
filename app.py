@@ -272,9 +272,11 @@ def main():
             
         start_date=st.date_input("Fecha inicial", datetime.date(2021, 1, 1))
         end_date=st.date_input("Fecha final", datetime.date(2021, 3, 15))
-        tickerDf = tickerData.history(period='1d', start=start_date, end=end_date)
-        string_logo = '<img src=%s>' % tickerData.info['logo_url']
-        st.sidebar.markdown(string_logo, unsafe_allow_html=True)
+        confirmedDf = confirmed.history(period='1d', start=start_date, end=end_date)
+        deathsDf = deaths.history(period='1d', start=start_date, end=end_date)
+        recoveredDf = recovered.history(period='1d', start=start_date, end=end_date)
+        #string_logo = '<img src=%s>' % tickerData.info['logo_url']
+        #st.sidebar.markdown(string_logo, unsafe_allow_html=True)
 
         # selections
         col1, col2, col3, _, _ = st.beta_columns(5)
