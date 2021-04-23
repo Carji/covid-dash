@@ -83,8 +83,8 @@ def transform2(df, collabel='confirmed'):
     return dfm
 
 def main():
-    st.set_page_config(page_title="Covid-19", page_icon=None, layout='centered', initial_sidebar_state='auto')
-    st.title("Covid 19 Exploratory Data Analysis 🔬")
+    st.set_page_config(page_title="Breve dash autoactualizable para el Covid-19", page_icon=None, layout='centered', initial_sidebar_state='auto')
+    st.title("Breve dash autoactualizable para el Covid-19 🔬")
     st.markdown("""\
         
     """)
