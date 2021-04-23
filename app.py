@@ -265,7 +265,8 @@ def main():
 #    st.pyplot(fig)
 #    st.info("""\
 
-    elif analysis == "Por fecha":        
+    elif analysis == "Por fecha":     
+        BASEURL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series"  
         start_date=datetime(2021,3,1)
         end_date=datetime(2021, 4, 22)
         #between_two_dates = ['start_date','end_date']
