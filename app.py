@@ -284,7 +284,7 @@ def main():
         
         
         
-        confirmedDf = pd.read_csv("2021-03-01.csv")
+        confirmedDf = pd.read_csv("03-01-2021.csv",error_bad_lines=False)
         df=confirmedDf      
 ## MAP
 
