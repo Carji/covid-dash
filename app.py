@@ -268,16 +268,17 @@ def main():
     elif analysis == "Por fecha":        
         start_date=datetime(2021,3,1)
         end_date=datetime(2021, 4, 22)
-#between_two_dates = ['start_date','end_date']
+        #between_two_dates = ['start_date','end_date']
         newdate0=datetime.date(start_date)
-        newdate=datetime.strptime("2021,3,1","%Y,%m,%d" ).strftime("%Y-%m-%d")
-#newdate=datetime(start_date,"%Y-%m-%d")
-#newdate2=datetime(start_date,"%m/%d/%Y")
-#confirmedDf = pd.read_csv(f"{BASEURL2}/+ start_date + '.csv'")
-#deathsDf = deaths.loc(newdate)
-#recoveredDf = recovered.loc(newdate)
-        baseurl2="/"+newdate+".csv"        
-        confirmedDf = pd.read_csv(f"{baseurl2}")      
+        newdate=datetime.strptime("2021,3,1","%Y,%m,%d" ).strftime("%m-%d-%Y")
+        #newdate=datetime(start_date,"%Y-%m-%d")
+        #newdate2=datetime(start_date,"%m/%d/%Y")
+        #confirmedDf = pd.read_csv(f"{BASEURL2}/+ start_date + '.csv'")
+        #deathsDf = deaths.loc(newdate)
+        #recoveredDf = recovered.loc(newdate)
+        baseurl2="/"+newdate+".csv"
+        url2_confirmed = f"{BASEURL}{baseurl2}"  
+        confirmeddF = pd.read_csv(url2_confirmed, index_col=0)
         df=confirmedDf      
 ## MAP
 
