@@ -299,7 +299,7 @@ def main():
                 radius_min_pixels=5,
                 radius_max_pixels=60,
                 line_width_min_pixels=1,
-                get_position=["Longitude", "Latitude"],
+                get_position=["Long_", "Lat"],
                 get_radius=metric_to_show_in_covid_Layer,
                 get_fill_color=[252, 136, 3],
                 get_line_color=[255,0,0],
@@ -315,22 +315,7 @@ def main():
 # Create a subheading to display current date
         subheading = st.subheader("")
 # Render the deck.gl map in the Streamlit app as a Pydeck chart 
-        map = st.pydeck_chart(r)
-# Update the maps and the subheading each day for 90 days
-        for i in range(0, 120, 1):
-    # Increment day by 1
-            date += datetime.timedelta(days=1)
-    # Update data in map layers
-            covidLayer.data = df[df['Last_Update'] == date.isoformat()]
-    # Update the deck.gl map
-            r.update()
-    # Render the map
-            map.pydeck_chart(r)
-    # Update the heading with current date
-            subheading.subheader("%s on : %s" % (metric_to_show_in_covid_Layer, date.strftime("%B %d, %Y")))
-    
-# wait 0.1 second before go onto next day
-            time.sleep(0.05)              
+        map = st.pydeck_chart(r)      
               
               
               
