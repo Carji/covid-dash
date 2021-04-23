@@ -264,83 +264,45 @@ def main():
 
     elif analysis == "Por fecha":        
 
-        confirmed, deaths, recovered = read_data()
+    data = pd.DataFrame({
+        'awesome cities' : ['Chicago', 'Minneapolis', 'Louisville', 'Topeka'],
+        'lat' : [41.868171, 44.979840,  38.257972, 39.030575],
+        'lon' : [-87.667458, -93.272474, -85.765187,  -95.702548]
+    })
 
-        st.header("Estadísticas por fecha")
-        st.markdown("""\
-             """)
-            
-        start_date=st.date_input("Fecha inicial", datetime.date(1/15/20))
-        end_date=st.date_input("Fecha final", datetime.date(3/15/20))
-#        between_two_dates = start_date & end_date
-        confirmedDf = confirmed.loc(start_date)
-        deathsDf = deaths.loc(start_date)
-        recoveredDf = recovered.loc(start_date)
-        #string_logo = '<img src=%s>' % tickerData.info['logo_url']
-        #st.sidebar.markdown(string_logo, unsafe_allow_html=True)
-       
+    # Adding code so we can have map default to the center of the data
+    midpoint = (np.average(data['lat']), np.average(data['lon']))
 
-        # selections
-        col1, col2, col3, _, _ = st.beta_columns(5)
-
-        selection = col1.selectbox("Selecciona un país:", countries)
-        cummulative = col2.radio("Conteo:", ["Casos totales", "Nuevas notificaciones"])
-        norm_sel = col3.radio("Normalizar:", ["No", "Sí"])
-        normalizar = selection if norm_sel == "Sí" else False
-        
-        confirmed = confirmed[confirmed["Country/Region"] == selection].iloc[:,3:]
-        confirmed = transform(confirmed, collabel="confirmed", norm=normalizar)
-
-        deaths = deaths[deaths["Country/Region"] == selection].iloc[:,3:]
-        deaths = transform(deaths, collabel="deaths", norm=normalizar)
-
-        recovered = recovered[recovered["Country/Region"] == selection].iloc[:,3:]
-        recovered = transform(recovered, collabel="recovered", norm=normalizar)
-
-        
-        df = reduce(lambda a,b: pd.merge(a,b, on='date'), [confirmed, recovered, deaths])
-        df["active"] = df.confirmed - (df.deaths + df.recovered)
-
-        variables = ["recovered", "active", "deaths"]
-        colors = ["green", "blue", "red"]
-
-        value_vars = variables
-        SCALE = alt.Scale(domain=variables, range=colors)
-        if cummulative == 'Nuevas notificaciones':
-            value_vars = ["new"]
-            df["new"] = df.confirmed - df.shift(1).confirmed
-            df["new"].loc[df.new < 0]  = 0
-            SCALE = alt.Scale(domain=["new"], range=["blue"]) 
-
-        dfm = pd.melt(df.reset_index(), id_vars=["date"], value_vars=value_vars)
-
-        # introduce order col as altair does auto-sort on stacked elements
-        dfm['order'] = dfm['variable'].replace(
-            {val: i for i, val in enumerate(variables[::-1])}
-        )
-
-        cases_label = "Casos" if normalizar == False else "Casos por 100000 habitantes"
-
-        c = alt.Chart(dfm.reset_index()).mark_bar().properties(height=300).encode(
-            x=alt.X("date:T", title="Fecha"),
-            y=alt.Y("sum(value):Q", title=cases_label, scale=alt.Scale(type='linear')),
-            color=alt.Color('variable:N', title="Categoría", scale=SCALE),#, sort=alt.EncodingSortField('value', order='ascending')),
-            order='order'
-        ).interactive()
-
-        if cummulative != 'Nuevas notificaciones':
-            st.altair_chart(c, use_container_width=True)
-        else:
-            # media semanal (falta añadir IA14d)
-            rm_7day = df[['new']].rolling('7D').mean().rename(columns={'new': 'value'})
-            c_7day = alt.Chart(rm_7day.reset_index()).properties(height=300).mark_line(strokeDash=[1,1], color='red').encode(
-                x=alt.X("date:T", title="Fecha"),
-                y=alt.Y("value:Q", title=cases_label, scale=alt.Scale(type='linear')),
+    st.deck_gl_chart(
+                viewport={
+                    'latitude': midpoint[0],
+                    'longitude':  midpoint[1],
+                    'zoom': 4
+                },
+                layers=[{
+                    'type': 'ScatterplotLayer',
+                    'data': data,
+                    'radiusScale': 250,
+       'radiusMinPixels': 5,
+                    'getFillColor': [248, 24, 148],
+                }]
             )
-            st.altair_chart((c + c_7day), use_container_width=True)
-            st.markdown(f"""\
-                <div style="font-size: small">Nuevos casos diarios (incluyendo media semanal).</div><br/>
-                """, unsafe_allow_html=True)    
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
+              
         st.info("""    
         Fuente de datos: [Johns Hopkins Univerity (GitHub)](https://github.com/CSSEGISandData/COVID-19). 
     """)
