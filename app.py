@@ -175,7 +175,7 @@ def main():
         ).interactive()
 
 #        st.altair_chart(alt.hconcat(c4, alt.vconcat(c2, c3)), use_container_width=True)
-        st.altair_chart(alt.vconcat(c2, c3)), use_container_width=True)
+        st.altair_chart(alt.vconcat(c2, c3), use_container_width=True)
         st.altair_chart(c4, use_container_width=True)
 
         st.markdown(f"""\
