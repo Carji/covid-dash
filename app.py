@@ -297,7 +297,7 @@ def main():
 
 
 
-        map_config={"scrollZoom": False, "displayModeBar": False}
+        map_config={"scrollZoom": True, "displayModeBar": True}
         reg_map=px.scatter_geo (df, lat="lat", lon="lon", size="Confirmed",
                 center={"lat": 45.0, "lon": 0.2},
                 labels={"Totales": "Positivos"},
