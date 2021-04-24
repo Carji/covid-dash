@@ -16,7 +16,7 @@ import numpy as np
  
 
 
-#Poblaciones en 2021 (actualizado el 15-Marzo)
+#Poblaciones en 2021 (actualizado el 25-Abril-2021)
 habitantes = {
              'Andorra': 0.077, 
              'Argentina': 45.20,
@@ -180,7 +180,7 @@ def main():
 
         st.markdown(f"""\
             <div style="font-size: small">
-            Poblaciones actualizadas a Febrero de 2021.
+            Poblaciones actualizadas a 25 de Abril de 2021.
             </div><br/>  
 
             """, unsafe_allow_html=True)
