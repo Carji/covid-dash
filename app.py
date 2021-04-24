@@ -317,7 +317,10 @@ def main():
         reg_map.update_geos (fitbounds=False, resolution=50)
         st.plotly_chart(reg_map, use_container_width=True, config=map_config)
               
-              
+        st.subheader('Datos por subregión')
+        # drop down for unique value from a column
+        platform_name = st.selectbox('Selecciona subregión', options=df.Combined_Key.unique())
+        st.write(df[df["Combined_Key"]==Combined_Key])      
               
               
         st.info("""    
