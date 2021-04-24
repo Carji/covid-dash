@@ -297,21 +297,18 @@ def main():
 
 
 
-        counties = alt.topo_feature(df, 'Country_Region')
-#        source = df#[df['Confirmed']]
-
-        st.alt.Chart(counties).mark_geoshape().encode(
-            color='Deaths'
-        ).project(
-            type='albersUsa'
-        ).properties(
-            width=500,
-            height=300
-        )   
-              
-              
-              
-              
+        map_config={"scrollZoom": False, "displayModeBar": False}
+        reg_map=px.scatter_geo (df, lat="Lat", lon="Long_", size="Confirmed",
+                center={"Lat": 45.0, "Long_": 0.2},
+                labels={"Totales": "Positivos"},
+                hover_data={"Lat": False, "Long_": False},
+#        hover_name=["Country_Region"],
+                scope="europe",
+                height=700,
+                size_max=100,
+                title="Positivos por región")
+        reg_map.update_geos (fitbounds="Province_State", resolution=50)
+        st.plotly_chart(reg_map, use_container_width=True, config=map_config)
               
               
               
