@@ -1,4 +1,4 @@
-FIPS,Admin2,Province_State,Country_Region,Last_Update,Lat,Long_,Confirmed,Deaths,Recovered,Active,Combined_Key,Incident_Rate,Case_Fatality_Ratio
+FIPS,Admin2,Province_State,Country_Region,Last_Update,lat,lon,Confirmed,Deaths,Recovered,Active,Combined_Key,Incident_Rate,Case_Fatality_Ratio
 ,,,Afghanistan,2021-04-24 04:20:38,33.93911,67.709953,58542,2565,52363,3614,Afghanistan,150.38400942901728,4.38146971405145
 ,,,Albania,2021-04-24 04:20:38,41.1533,20.1683,130270,2367,104278,23625,Albania,4526.721801376051,1.8169954709449605
 ,,,Algeria,2021-04-24 04:20:38,28.0339,1.6596,120562,3190,84038,33334,Algeria,274.93530769610203,2.6459415072742654
