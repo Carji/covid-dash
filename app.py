@@ -292,16 +292,16 @@ def main():
 
         st.markdown("Cases map")
 
-        st.map(df[df['Lat'].notnull()][['Lat','Long_']])
+        st.map(df[df['lat'].notnull()][['lat','lon']])
               
 
 
 
         map_config={"scrollZoom": False, "displayModeBar": False}
-        reg_map=px.scatter_geo (df, lat="Lat", lon="Long_", size="Confirmed",
-                center={"Lat": 45.0, "Long_": 0.2},
+        reg_map=px.scatter_geo (df, lat="lat", lon="lon", size="Confirmed",
+                center={"lat": 45.0, "lon": 0.2},
                 labels={"Totales": "Positivos"},
-                hover_data={"Lat": False, "Long_": False},
+                hover_data={"lat": False, "lon": False},
 #        hover_name=["Country_Region"],
                 scope="europe",
                 height=700,
