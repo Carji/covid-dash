@@ -306,7 +306,7 @@ def main():
 #        hover_name=["Country_Region"],
 #                scope="europe",
 #                height=700,
-#                size_max=100,
+                size="Confirmed",
                 title="Positivos por región")
         reg_map.update_geos (fitbounds=False, resolution=50)
         st.plotly_chart(reg_map, use_container_width=True, config=map_config)
