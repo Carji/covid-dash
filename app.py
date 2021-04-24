@@ -299,10 +299,10 @@ def main():
 
         map_config={"scrollZoom": True, "displayModeBar": True}
         reg_map=px.scatter_geo (df, lat="lat", lon="lon", size="Confirmed", color="Deaths",
-                text = 'Admin2',
+#                text = 'Admin2',
                 center={"lat": 45.0, "lon": 0.2},
                 labels={"Totales": "Positivos"},
-                hover_data={"lat": False, "lon": False},
+                hover_data={"lat": False, "lon": False, "Admin2"},
 #        hover_name=["Country_Region"],
 #                scope="europe",
 #                height=700,
