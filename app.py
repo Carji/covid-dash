@@ -303,7 +303,7 @@ def main():
                 labels={"Totales": "Positivos"},
                 hover_data={"lat": False, "lon": False},
 #        hover_name=["Country_Region"],
-                scope="europe",
+#                scope="europe",
                 height=700,
                 size_max=100,
                 title="Positivos por región")
