@@ -307,7 +307,7 @@ def main():
                 height=700,
                 size_max=100,
                 title="Positivos por región")
-        reg_map.update_geos (fitbounds="False", resolution=50)
+        reg_map.update_geos (fitbounds=False, resolution=50)
         st.plotly_chart(reg_map, use_container_width=True, config=map_config)
               
               
