@@ -320,7 +320,7 @@ def main():
         st.subheader('Datos por subregión')
         # drop down for unique value from a column
         platform_name = st.selectbox('Selecciona subregión', options=df.Combined_Key.unique())
-        st.write(df[df["Combined_Key"]==Combined_Key])      
+        st.write(df[df["Combined_Key"]==platform_name])      
               
               
         st.info("""    
