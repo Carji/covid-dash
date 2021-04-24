@@ -3,9 +3,10 @@ from datetime import datetime
 from functools import reduce
 from pkg_resources import normalize_path
 import streamlit as st
-import pydeck as pdk 
 import pandas as pd
 import altair as alt
+import plotly.express as px
+import plotly.graph_objects as go
 import os
 import matplotlib.pyplot as plt
 import numpy as np
@@ -288,39 +289,9 @@ def main():
         df=confirmedDf      
 ## MAP
 
-# Variable for date picker, default to Jan 1st 2020
-        date = newdate
-# Set viewport for the deckgl map
-        view = pdk.ViewState(latitude=0, longitude=0, zoom=0.2,)
-# Create the scatter plot layer
-        covidLayer = pdk.Layer(
-                "ScatterplotLayer",
-                data=df,
-                pickable=False,
-                opacity=0.3,
-                stroked=True,
-                filled=True,
-                radius_scale=10,
-                radius_min_pixels=5,
-                radius_max_pixels=60,
-                line_width_min_pixels=1,
-                get_position=["Long_", "Lat"],
-                get_radius="Confirmed",
-                get_fill_color=[252, 136, 3],
-                get_line_color=[255,0,0],
-                tooltip="test test",
-            )
+st.markdown("Cases map")
 
-# Create the deck.gl map
-        r = pdk.Deck(
-            layers=[covidLayer],
-            initial_view_state=view,
-            map_style="mapbox://styles/mapbox/light-v10",
-)
-# Create a subheading to display current date
-        subheading = st.subheader("")
-# Render the deck.gl map in the Streamlit app as a Pydeck chart 
-        map = st.pydeck_chart(r)      
+st.map(df[df['Lat'].notnull()][['Lat','Long_']])
               
               
               
