@@ -307,7 +307,7 @@ def main():
 #                scope="europe",
 #                height=700,
 #                 projection="natural earth",
-                 hover_name=["Province_State","Country_Region"],
+                 hover_name="Province_State",#,"Country_Region"],
 #                size_max=100,
                 title="Positivos por región")
         reg_map.update_geos (fitbounds=False, resolution=50)
