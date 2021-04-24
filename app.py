@@ -302,7 +302,6 @@ def main():
 
         st.alt.Chart(counties).mark_geoshape().encode(
             color='Deaths'
-        )
         ).project(
             type='albersUsa'
         ).properties(
