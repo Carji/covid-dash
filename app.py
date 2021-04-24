@@ -51,6 +51,9 @@ habitantes = {
 
 
 @st.cache(ttl=60*60*1)
+
+
+
 def read_data():
     BASEURL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series"    
     url_confirmed = f"{BASEURL}/time_series_covid19_confirmed_global.csv"
@@ -60,8 +63,7 @@ def read_data():
     confirmed = pd.read_csv(url_confirmed, index_col=0)
     deaths = pd.read_csv(url_deaths, index_col=0)
     recovered = pd.read_csv(url_recovered, index_col=0)
-
-    # sum over potentially duplicate rows (France and their territories)
+    # sum over subregions (France, USA & others)
     confirmed = confirmed.groupby("Country/Region").sum().reset_index()
     deaths = deaths.groupby("Country/Region").sum().reset_index()
     recovered = recovered.groupby("Country/Region").sum().reset_index()
@@ -88,8 +90,8 @@ def transform2(df, collabel='confirmed'):
     return dfm
 
 def main():
-    st.set_page_config(page_title="Breve dash autoactualizable para el Covid-19", page_icon=None, layout='centered', initial_sidebar_state='auto')
-    st.title("Dash autoactualizable para el Covid-19 🔬")
+    st.set_page_config(page_title="Dash autogestionado para el Covid-19", page_icon=None, layout='centered', initial_sidebar_state='auto')
+    st.title("Dash autogestionado para el Covid-19 🔬")
     st.markdown("""\
         
     """)
@@ -99,7 +101,7 @@ def main():
              "Denmark","Egypt","Ethiopia","France","Germany","Greece","India","Indonesia","Italy","Japan","Netherlands", \
              "Norway","Poland","Romania","Russia","Spain","Sweden","Switzerland","United Kingdom",]
 
-    analysis = st.sidebar.selectbox("Desplegable", ["Por fecha","Por país","Resumen global"])
+    analysis = st.sidebar.selectbox("Desplegable", ["Situación global del virus","Por país","Resumen global"])
 
     if analysis == "Resumen global":
 
@@ -267,20 +269,20 @@ def main():
 #    st.pyplot(fig)
 #    st.info("""\
 
-    elif analysis == "Por fecha":     
-        BASEURL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series"  
-        start_date=datetime(2021,3,1)
-        end_date=datetime(2021, 4, 22)
+    elif analysis == "Situación global del virus":     
+#        BASEURL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series"  
+#        start_date=datetime(2021,3,1)
+#        end_date=datetime(2021, 4, 22)
         #between_two_dates = ['start_date','end_date']
-        newdate0=datetime.date(start_date)
-        newdate=datetime.strptime("2021,3,1","%Y,%m,%d" ).strftime("%m-%d-%Y")
+#        newdate0=datetime.date(start_date)
+#        newdate=datetime.strptime("2021,3,1","%Y,%m,%d" ).strftime("%m-%d-%Y")
         #newdate=datetime(start_date,"%Y-%m-%d")
         #newdate2=datetime(start_date,"%m/%d/%Y")
         #confirmedDf = pd.read_csv(f"{BASEURL2}/+ start_date + '.csv'")
         #deathsDf = deaths.loc(newdate)
         #recoveredDf = recovered.loc(newdate)
-        baseurl2="/"+newdate+".csv"
-        url2_confirmed = f"{BASEURL}{baseurl2}"  
+#        baseurl2="/"+newdate+".csv"
+ #       url2_confirmed = f"{BASEURL}{baseurl2}"  
  #       confirmedDf = pd.read_csv(f"{url2_confirmed}")
         
         
@@ -290,7 +292,7 @@ def main():
         df=confirmedDf      
 ## MAP
 
-        st.markdown("Cases map")
+        st.markdown("Mapas descriptivos de la situación global del Covid-19")
 
         st.map(df[df['lat'].notnull()][['lat','lon']])
               
@@ -309,7 +311,7 @@ def main():
 #                 projection="natural earth",
                  hover_name="Combined_Key",#,"Country_Region"],
 #                size_max=100,
-                title="Positivos por región")
+                title="Positivos y muertes por subregión")
         reg_map.update_geos (fitbounds=False, resolution=50)
         st.plotly_chart(reg_map, use_container_width=True, config=map_config)
               
