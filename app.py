@@ -101,11 +101,11 @@ def main():
              "Denmark","Egypt","Ethiopia","France","Germany","Greece","India","Indonesia","Italy","Japan","Netherlands", \
              "Norway","Poland","Romania","Russia","Spain","Sweden","Switzerland","United Kingdom",]
 
-    analysis = st.sidebar.selectbox("Desplegable", ["Situación global del virus","Por país","Resumen global"])
+    analysis = st.sidebar.selectbox("Desplegable", ["Situación global del virus","Por país","Histórico global"])
 
-    if analysis == "Resumen global":
+    if analysis == "Histórico global":
 
-        st.header("Mortalidad y casos de Covid-19 en diversos países")
+        st.header("Histórico de mortalidad y casos de Covid-19 en países seleccionados")
         st.markdown("""\
             Casos de Covid-19 en los países seleccionados"""
             f""" (Lista completa: {', '.join(countries)}). 
