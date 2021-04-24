@@ -291,7 +291,7 @@ def main():
 
         st.markdown("Cases map")
 
-        st.map(df[df['Lat'].notnull()][['Lat','Long_']])
+        st.map(df[df['lat'].notnull()][['lat','lon']])
               
               
               
