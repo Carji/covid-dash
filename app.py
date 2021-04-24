@@ -289,9 +289,9 @@ def main():
         df=confirmedDf      
 ## MAP
 
-st.markdown("Cases map")
+        st.markdown("Cases map")
 
-st.map(df[df['Lat'].notnull()][['Lat','Long_']])
+        st.map(df[df['Lat'].notnull()][['Lat','Long_']])
               
               
               
