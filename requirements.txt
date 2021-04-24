@@ -4,3 +4,4 @@ streamlit==0.71.0
 numpy
 matplotlib
 plotly
+pydeck
