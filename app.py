@@ -166,15 +166,17 @@ def main():
         per100k.loc[:,'per100k'] = per100k.per100k.round(2)
 
         c4 = alt.Chart(per100k.reset_index()).properties(width=75).mark_bar().encode(
-            x=alt.X("per100k:Q", title="Casos por 100000 habitantes"),
-            y=alt.Y("country:N", title="Países", sort=None),
+            y=alt.Y("per100k:Q", title="Casos por 100000 habitantes"),
+            x=alt.X("country:N", title="Países", sort=None),
             color=alt.Color('country:N', title="Países",scale=alt.Scale(scheme='tableau20')),
             tooltip=[alt.Tooltip('country:N', title='País'), 
                      alt.Tooltip('per100k:Q', title='Casos por 100000 habitantes'),
                      alt.Tooltip('habitantes:Q', title='Habitantes [10^6]')]
         ).interactive()
 
-        st.altair_chart(alt.hconcat(c4, alt.vconcat(c2, c3)), use_container_width=True)
+#        st.altair_chart(alt.hconcat(c4, alt.vconcat(c2, c3)), use_container_width=True)
+        st.altair_chart(alt.vconcat(c2, c3)), use_container_width=True)
+        st.altair_chart(c4, use_container_width=True)
 
         st.markdown(f"""\
             <div style="font-size: small">
