@@ -298,13 +298,11 @@ def main():
 
 
         counties = alt.topo_feature(df, 'Country_Region')
-        source = df#[df['Confirmed']]
+#        source = df#[df['Confirmed']]
 
         st.alt.Chart(counties).mark_geoshape().encode(
             color='Deaths'
-        ).transform_lookup(
-            lookup='Admin2',
-            from_=alt.LookupData(source, 'Admin2', ['Recovered'])
+        )
         ).project(
             type='albersUsa'
         ).properties(
