@@ -294,7 +294,7 @@ def main():
         df=confirmedDf      
 ## MAP
 
-        st.markdown("Mapas descriptivos de la situación global del Covid-19")
+        st.markdown("Mapas descriptivos de la situación global del Covid-19 (actualizado a 2021-05-22 04:20:45)")
 
         st.map(df[df['lat'].notnull()][['lat','lon']])
               
