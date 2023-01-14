@@ -99,9 +99,9 @@ def main():
 
     countries = ["Andorra", "Argentina", "Australia","Austria","Bangladesh","Belgium","Brazil","Canada","China","Colombia", \
              "Denmark","Egypt","Ethiopia","France","Germany","Greece","India","Indonesia","Italy","Japan","Netherlands", \
-             "Norway","Poland","Romania","Russia","Spain","Sweden","Switzerland","United Kingdom",]
+             "Norway","Poland","Romania","Russia","Spain","Sweden","Switzerland"]
 
-    analysis = st.sidebar.selectbox("Desplegable", ["Situación global del virus","Por país","Histórico global"])
+    analysis = st.sidebar.selectbox("Desplegable", ["Histórico global","Situación global del virus","Por país"])
 
     if analysis == "Histórico global":
 
@@ -145,16 +145,16 @@ def main():
             SCALE = alt.Scale(type='log', domain=[10, int(max(confirmed.confirmed))], clamp=True)
 
 
-        c2 = alt.Chart(confirmed.reset_index()).properties(height=150).mark_line().encode(
+        c2 = alt.Chart(confirmed.reset_index()).mark_line().encode(
             x=alt.X("date:T", title="Fecha"),
             y=alt.Y("confirmed:Q", title="Número de casos", scale=SCALE),
             color=alt.Color('country:N', title="País",scale=alt.Scale(scheme='tableau20'))
         ).interactive()
 
         # case fatality rate...
-        c3 = alt.Chart(frate.reset_index()).properties(height=100).mark_line().encode(
+        c3 = alt.Chart(frate.reset_index()).mark_line().encode(
             x=alt.X("date:T", title="Fecha"),
-            y=alt.Y("frate:Q", title="Tasa de mortalidad [%]", scale=alt.Scale(type='linear')),
+            y=alt.Y("frate:Q", title="Tasa de mortalidad [%]", scale=alt.Scale(scheme='tableau20')),
             color=alt.Color('country:N', title="País")
         ).interactive()
 
@@ -165,7 +165,7 @@ def main():
         per100k = per100k.sort_values(ascending=False, by='per100k')
         per100k.loc[:,'per100k'] = per100k.per100k.round(2)
 
-        c4 = alt.Chart(per100k.reset_index()).properties(width=75).mark_bar().encode(
+        c4 = alt.Chart(per100k.reset_index()).mark_bar().encode(
             y=alt.Y("per100k:Q", title="Casos por 100000 habitantes"),
             x=alt.X("country:N", title="Países", sort=None),
             color=alt.Color('country:N', title="Países",scale=alt.Scale(scheme='tableau20')),
@@ -174,7 +174,6 @@ def main():
                      alt.Tooltip('habitantes:Q', title='Habitantes [10^6]')]
         ).interactive()
 
-#        st.altair_chart(alt.hconcat(c4, alt.vconcat(c2, c3)), use_container_width=True)
         st.altair_chart(alt.vconcat(c2, c3), use_container_width=True)
         st.altair_chart(c4, use_container_width=True)
 
@@ -201,7 +200,7 @@ def main():
             """)
 
         # selections
-        col1, col2, col3, _, _ = st.beta_columns(5)
+        col1, col2, col3, _, _ = st.columns(5)
 
         selection = col1.selectbox("Selecciona un país:", countries)
         cummulative = col2.radio("Conteo:", ["Casos totales", "Nuevas notificaciones"])
